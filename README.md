@@ -332,6 +332,8 @@ Paste in the following:
     LogLevel warn
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+
+
 If you need help finding your servers hostname go here and paste the IP address. Save and quit nano
 
 Enable to virtual host: $ sudo a2ensite catalog.conf and DISABLE the default host $ a2dissite 000-default.conf otherwise your site will not load with the hostname.
