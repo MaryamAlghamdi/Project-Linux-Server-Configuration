@@ -313,24 +313,43 @@ $ sudo nano /etc/apache2/sites-available/catalog.conf
 Paste in the following:
 
 <VirtualHost *:80>
+
     ServerName [Public IP]
+    
     ServerAlias [Hostname]
+    
     ServerAdmin admin@35.167.27.204
+    
     WSGIDaemonProcess catalog python-path=/var/www/catalog:/var/www/catalog/venv/lib/python2.7/site-packages
+    
     WSGIProcessGroup catalog
+    
     WSGIScriptAlias / /var/www/catalog/catalog.wsgi
+    
     <Directory /var/www/catalog/catalog/>
+    
         Order allow,deny
+	
         Allow from all
+	
     </Directory>
+    
     Alias /static /var/www/catalog/catalog/static
+    
     <Directory /var/www/catalog/catalog/static/>
+    
         Order allow,deny
+	
         Allow from all
+	
     </Directory>
+    
     ErrorLog ${APACHE_LOG_DIR}/error.log
+    
     LogLevel warn
+    
     CustomLog ${APACHE_LOG_DIR}/access.log combined
+    
 </VirtualHost>
 
 
