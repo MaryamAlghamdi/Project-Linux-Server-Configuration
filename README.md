@@ -228,11 +228,13 @@ Finally, give the catalog user a password by running \password catalog
 
 Check to make sure the catalog user was created by running \du; a table of sorts will be returned, and it should look like this:
 
-				   List of roles
+
  Role name |                         Attributes                         | Member of 
 -----------+------------------------------------------------------------+-----------
  catalog   | Create DB                                                  | {}
  postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
+ 
+ 
 Exit psql by running \q
 
 Switch back to the ubuntu user by running exit
@@ -360,10 +362,12 @@ Restart your apache server $ sudo service apache2 restart and now your IP addres
 
 References:
 https://github.com/bencam/linux-server-configuration
+
 https://github.com/mulligan121/Udacity-Linux-Configuration/blob/master/README.md
 ______________________________________________________________#
 
 Authors:
 Mariam Alghamdi
+
 Many instructions have been reached through :udacity.com - Full Stack Web Developer Nanodegree Program
 
