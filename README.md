@@ -271,38 +271,58 @@ Run sudo apt-get install git
 Application Deployment
 
 Start by installing the required software
+
 $ sudo apt-get install apache2
+
 $ sudo apt-get install libapache2-mod-wsgi python-dev
+
 $ sudo apt-get install git
+
 Enable mod_wsgi with the command $ sudo a2enmod wsgi and restart Apache using $ sudo service apache2 restart.
+
 If you input the servers IP address into a web browser you'll see the Apache2 Ubuntu Default Page
+
 We now have to create a directory for our catalog application and make the user grader the owner.
+
 $ cd /var/www
 $ sudo mkdir catalog
 $ sudo chown -R grader:grader catalog
 $ cd catalog
+
 In this directory we will have our catalog.wsgi file var/www/catalog/catalog.wsgi, our virtual environment directory which we will create soon and call venv /var/www/catalog/venv, and also our application which will sit inside of another directory called catalog /var/www/catalog/catalog.
+
 First lets start by cloning our Catalog Application repository by $ git clone [repository url] catalog
 Create the .wsgi file by $ sudo nano catalog.wsgi and make sure your secret key matches with your project secret key
+
 import sys
+
 import logging
+
 logging.basicConfig(stream=sys.stderr)
+
 sys.path.insert(0, "/var/www/catalog/")
 
 from catalog import app as application
+
 application.secret_key = 'super_secret_key'
+
+
 Rename your application.py, project.py, or whatever you called it in your catalog application folder to __init__.py by $ mv project.py __init__.py
 Now lets create our virtual environment, make sure you are in /var/www/catalog.
+
 $ sudo pip install virtualenv
 $ sudo virtualenv venv
 $ source venv/bin/activate
 $ sudo chmod -R 777 venv
+
 This is what your command line should look like enter image description here
 
 While our virtual environment is activated we need to install all packages required for our Flask application. Here are some defaults but you may have more to install.
+
 $ sudo apt-get install python-pip
 $ sudo pip install flask
 $ sudo pip install httplib2 oauth2client sqlalchemy psycopg2 #etc...
+
 Now for our application to properly run we must do some tweaking to the __init__.py file.
 
 Anywhere in the file where Python tries to open client_secrets.json or fb_client_secrets.json must be changed to its complete path ex: /var/www/catalog/catalog/client_secrets.json enter image description here
