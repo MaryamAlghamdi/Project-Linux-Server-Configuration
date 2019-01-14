@@ -28,19 +28,33 @@ in your terminal to see the version number.
 The shell prompt in your terminal may differ. Here, the $ sign is the shell prompt
 
 _____________________________________________________________#
+
 Software to install during the configuration :
+
 Apache2
+
 mod_wsgi
+
 PostgreSQL
+
 git
+
 pip
+
 virtualenv
+
 httplib2
+
 Python Requests
+
 oauth2client
+
 SQLAlchemy
+
 Flask
+
 libpq-dev
+
 Psycopg2
 ______________________________________________________________#
 
@@ -99,18 +113,8 @@ Run sudo ufw deny 22 to deny port 22 (deny this port since it is not being used 
 
 Run sudo ufw enable to enable the ufw firewall
 
-Run sudo ufw status to check which ports are open and to see if the ufw is active; if done correctly, it should look like this:
+Run sudo ufw status to check which ports are open and to see if the ufw is active
 
-To                         Action      From
---                         ------      ----
-22                         DENY        Anywhere
-2200/tcp                   ALLOW       Anywhere
-80/tcp                     ALLOW       Anywhere
-123/udp                    ALLOW       Anywhere
-22 (v6)                    DENY        Anywhere (v6)
-2200/tcp (v6)              ALLOW       Anywhere (v6)
-80/tcp (v6)                ALLOW       Anywhere (v6)
-123/udp (v6)               ALLOW       Anywhere (v6)
 Update the external (Amazon Lightsail) firewall on the browser by clicking on the 'Manage' option, then the 'Networking' tab, and then changing the firewall configuration to match the internal firewall settings above (only ports 80(TCP), 123(UDP), and 2200(TCP) should be allowed; make sure to deny the default port 22)
 
 Now, to login (on a Mac), open up the Terminal and run:
@@ -226,14 +230,7 @@ Next, give the catalog user the ability to create databases: ALTER ROLE catalog 
 
 Finally, give the catalog user a password by running \password catalog
 
-Check to make sure the catalog user was created by running \du; a table of sorts will be returned, and it should look like this:
-
-
- Role name |                         Attributes                         | Member of 
------------+------------------------------------------------------------+-----------
- catalog   | Create DB                                                  | {}
- postgres  | Superuser, Create role, Create DB, Replication, Bypass RLS | {}
- 
+Check to make sure the catalog user was created by running \du; a table of sorts will be returned
  
 Exit psql by running \q
 
